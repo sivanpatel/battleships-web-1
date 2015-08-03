@@ -1,10 +1,9 @@
 
 <a href="http://localhost:9292/">New Game</a>
-	What is your name?
-	<button name="name" type="submit" value="HTML">HTML</button>
-	<a>
-	
-<!-- <form action="/" method="post">
-  What is your name?
-  <button name="name" type="submit" value="HTML">HTML</button>
-</form> -->
+
+<form action="/NewGame">
+  My name is <%= @name %>.
+  What's your name?
+  <input type="text" name="name">
+  <input type="submit" value="Submit">
+</form>

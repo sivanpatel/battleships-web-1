@@ -1,10 +1,16 @@
 require 'sinatra/base'
 
 class BattleshipsWeb < Sinatra::Base
+  
   get '/' do
     'Hello BattleshipsWeb!'
     erb :index
   end
+
+  get '/NewPage' do 
+  	@visitor = params[:name]
+  	erb :index
+  end 
 
   set :views, Proc.new { File.join(root, "..", "views") }
   
