@@ -9,6 +9,6 @@ Feature: Starting the game
     Then I should see "What's your name?"
 
   Scenario: Starting a new game
-  	Given I am on the new page 
+  	Given I am on the new game page
   	When I submit "name"
   	Then a "new game" is created
