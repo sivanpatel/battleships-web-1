@@ -11,4 +11,5 @@ Feature: Starting the game
   Scenario: Starting a new game
   	Given I am on the new game page
   	When I submit "name"
-  	Then a "new game" is created
+  	Then I should visit the game page
+    Then a "new game" is created

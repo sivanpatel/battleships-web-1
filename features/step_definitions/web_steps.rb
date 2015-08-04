@@ -17,7 +17,7 @@ end
 World(WithinHelpers)
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
+  visit path_to(page_name)  #these are all capybara syntaxes
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
@@ -217,4 +217,19 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
-######################################################################################################################################################################################################################################
+
+
+
+##############################################################################################################################################################
+When(/^I submit "([^"]*)"$/) do |arg1|
+  click_on 'Submit'
+end
+
+Then(/^I should visit the game page$/) do
+   visit path_to '/game'
+end
+
+
+# Then(/^a "([^"]*)" is created$/) do |arg1|
+#  #
+# end
