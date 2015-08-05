@@ -23,6 +23,9 @@ module NavigationHelpers
   when /the new game page/
     '/newgame'
 
+  when /the successful name page/
+    '/name?name=Fred'
+
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

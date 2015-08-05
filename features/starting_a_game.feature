@@ -1,4 +1,4 @@
-Feature: Starting the game
+Feature: initiating a game
   In order to play battleships
   As a nostalgic player
   I want to start a new game
@@ -20,4 +20,7 @@ Feature: Starting the game
     When I press "Submit"
     Then I should see "Hello Fred, welcome to Battleships!"
 
-  
+  Scenario: Displaying the game Board
+    Given I am on the successful name page
+    When I press "New Game"
+    Then I should see "ABCDEFGHIJ"
