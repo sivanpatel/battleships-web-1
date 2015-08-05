@@ -19,3 +19,5 @@ Feature: Starting the game
     And I fill in "name" with "Fred"
     When I press "Submit"
     Then I should see "Hello Fred, welcome to Battleships!"
+
+  

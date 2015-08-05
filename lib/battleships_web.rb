@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'battleships'
 
 class BattleshipsWeb < Sinatra::Base
 
@@ -12,6 +13,9 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/newgame' do
+    game = Game.new Player, Board
+    @matrix = game.own_board_view game.player_1
+    puts @matrix
     erb :newgame
   end
 
