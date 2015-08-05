@@ -226,7 +226,7 @@ When(/^I submit "([^"]*)"$/) do |arg1|
 end
 
 Then(/^I should visit the game page$/) do
-   visit path_to '/game'
+   visit '/game'
 end
 
 

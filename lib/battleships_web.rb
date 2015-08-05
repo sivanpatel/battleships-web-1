@@ -6,13 +6,13 @@ class BattleshipsWeb < Sinatra::Base
     erb :index
   end
 
-  get '/newgame' do
+  get '/name' do
   	@visitor = params[:name]
-  	erb :newgame
+  	erb :name
   end
 
-  get '/game' do
-    erb :game
+  get '/newgame' do
+    erb :newgame
   end
 
   set :views, Proc.new { File.join(root, "..", "views") }

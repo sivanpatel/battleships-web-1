@@ -9,7 +9,13 @@ Feature: Starting the game
     Then I should see "What's your name?"
 
   Scenario: Starting a new game
-  	Given I am on the new game page
-  	When I submit "name"
-  	Then I should visit the game page
-    Then a "new game" is created
+  	Given I am on the name page
+    And I fill in "name" with ""
+  	When I press "Submit"
+  	Then I should see "What's your name?"
+
+  Scenario: Filling in a name
+    Given I am on the name page
+    And I fill in "name" with "Fred"
+    When I press "Submit"
+    Then I should see "Hello Fred, welcome to Battleships!"
