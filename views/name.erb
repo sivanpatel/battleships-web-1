@@ -1,9 +1,12 @@
 <% if @visitor != '' && @visitor != nil %>
   "Hello <%= @visitor %>, welcome to Battleships!""
   <form action="/newgame">
-    <input type="submit" value="New Game" >
+    <input type="submit" value="Single Player" >
   </form>
-
+  
+  <form action="/newgame_two_player">
+    <input type="submit" value="Two Player" >
+  </form>
 <% else %>
   <form action="/name">
     What's your name?

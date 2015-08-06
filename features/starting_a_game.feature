@@ -22,5 +22,5 @@ Feature: initiating a game
 
   Scenario: Displaying the game Board
     Given I am on the successful name page
-    When I press "New Game"
+    When I press "Single Player"
     Then I should see "ABCDEFGHIJ"

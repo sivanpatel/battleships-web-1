@@ -25,10 +25,10 @@ enable :sessions
     @visitor = session[:name]
     puts @visitor
     $game.player_2.place_ship Ship.submarine, 'A1', :horizontally
-    # $game.player_2.place_ship Ship.destroyer, 'B3', :vertically
-    # $game.player_2.place_ship Ship.cruiser, 'F2', :horizontally
-    # $game.player_2.place_ship Ship.battleship, 'J3', :vertically
-    # $game.player_2.place_ship Ship.aircraft_carrier, 'A10', :horizontally
+    $game.player_2.place_ship Ship.destroyer, 'B3', :vertically
+    $game.player_2.place_ship Ship.cruiser, 'F2', :horizontally
+    $game.player_2.place_ship Ship.battleship, 'J3', :vertically
+    $game.player_2.place_ship Ship.aircraft_carrier, 'A10', :horizontally
     erb :newgame
   end
 
@@ -36,10 +36,13 @@ enable :sessions
     @ship = params[:ship]
     @coordinate = params[:coordinate]
     @direction = params[:direction]
-    @shoot_at = params[:shoot_at]
     $game.player_1.place_ship Ship.send(@ship), @coordinate.capitalize, @direction.to_sym
     puts @shoot_at
     erb :newgame
+  end
+
+  get '/newgame_two_player' do
+    erb :newgame_two_player
   end
 
   get '/play_single' do
