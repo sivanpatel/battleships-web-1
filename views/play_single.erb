@@ -1,0 +1,31 @@
+PLAY
+<style type="text/css">
+.boards {
+ width: 500px;
+}
+
+.myboard {
+ float: left;
+}
+
+.enemyboard {
+ float: right;
+}
+</style>
+
+<div class='boards'>
+ <div class='myboard'>
+   My Board
+   <pre> <%= $game.own_board_view $game.player_1 %> </pre>
+ </div>
+ <div class='enemyboard'>
+   Enemy Board
+   <pre> <%= $game.opponent_board_view $game.player_1 %> </pre>
+ </div>
+</div>
+
+Shoot at these coordinates
+<form action="play_single" method="post">
+  <input type="text" name="coord">
+  <input value="Fire!" type="submit">
+</form>

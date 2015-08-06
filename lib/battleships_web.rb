@@ -24,6 +24,11 @@ enable :sessions
     $game = Game.new Player, Board
     @visitor = session[:name]
     puts @visitor
+    $game.player_2.place_ship Ship.submarine, 'A1', :horizontally
+    # $game.player_2.place_ship Ship.destroyer, 'B3', :vertically
+    # $game.player_2.place_ship Ship.cruiser, 'F2', :horizontally
+    # $game.player_2.place_ship Ship.battleship, 'J3', :vertically
+    # $game.player_2.place_ship Ship.aircraft_carrier, 'A10', :horizontally
     erb :newgame
   end
 
@@ -31,19 +36,30 @@ enable :sessions
     @ship = params[:ship]
     @coordinate = params[:coordinate]
     @direction = params[:direction]
+    @shoot_at = params[:shoot_at]
     $game.player_1.place_ship Ship.send(@ship), @coordinate.capitalize, @direction.to_sym
-    $game.player_2.place_ship Ship.send(@ship), random_coord, random_direction
-
+    puts @shoot_at
     erb :newgame
   end
 
-
-
-  get '/battleship' do
-    # game.player_1.place_ship Ship.aircraft_carrier
-    # erb :battleship
+  get '/play_single' do
     @visitor = session[:name]
+    erb :play_single
   end
+
+  post '/play_single' do
+    @coords = params[:coord]
+    $game.player_1.shoot @coords.capitalize.to_sym
+    $game.player_2.shoot random_coord.to_sym
+    redirect '/result' if $game.has_winner? == true
+    erb :play_single
+  end
+
+  get '/result' do
+    @visitor = session[:name]
+    erb :result
+  end
+
 
   set :views, Proc.new { File.join(root, "..", "views") }
 
@@ -57,7 +73,5 @@ enable :sessions
     number = rand(1..10).to_s
     letter + number
   end
-  def random_direction
-    direction = [:horizontally, :vertically].sample
-  end
+
 end
